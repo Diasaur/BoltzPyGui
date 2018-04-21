@@ -1,0 +1,10 @@
+# for gui
+pyqt5
+
+# for boltzpy
+numpy
+scipy
+matplotlib
+pyqt5
+# ffmpeg must be installed on system
+# Todo figure out a default case, if ffmpeg is missing
