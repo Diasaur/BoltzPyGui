@@ -1,7 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QTabWidget
-import boltzmann.gui.config.specimen as specimen
-import boltzmann.gui.config.grid as grid
-import boltzmann.gui.config.svgrid as svgrid
+import boltzmann.gui.config.config_ui as config_ui
 
 
 class TabWidget(QTabWidget):
@@ -11,17 +9,15 @@ class TabWidget(QTabWidget):
     (cnf: spec, grid, svgrid)
     """
 
-    def __init__(self, parent, cnf):
-        super(QWidget, self).__init__(parent)
+    def __init__(self, main):
+        super(QWidget, self).__init__()
 
         # setting tab properties
-        self.width = parent.width
-        self.height = parent.height
+        self.width = main.width
+        self.height = main.height
 
         # create config
-        self.tSpecimen = specimen.Window(cnf)
-        self.tGrid = grid.Window(cnf)
-        self.tSVGrid = svgrid.Window(cnf)
+        self.tab_config = config_ui.Window(main)
 
         # initializing tab
         self.init_ui()
@@ -30,6 +26,4 @@ class TabWidget(QTabWidget):
 
         self.resize(self.width, self.height)
 
-        self.addTab(self.tSpecimen, 'Specimen')
-        self.addTab(self.tGrid, 'Grid')
-        self.addTab(self.tSVGrid, 'SVGrid')
+        self.addTab(self.tab_config, self.tab_config.title)

@@ -12,18 +12,19 @@ class WMain(QMainWindow):
     -config + initialization (2 config with subtabs?)
     """
 
-    def __init__(self):
+    def __init__(self, cnf):
         super().__init__()
 
         # setting main window properties
         self.title = 'Main Window'
         self.left = 0
         self.top = 0
-        self.width = 1000
+        self.width = 800
         self.height = 600
+        self.cnf = cnf
 
         # creating main window widgets
-        self.tabWidget = tab.TabWidget(self, cnf)
+        self.tabWidget = tab.TabWidget(self)
 
         # initializing gui
         self.init_ui()
@@ -37,9 +38,9 @@ class WMain(QMainWindow):
         self.show()
 
 
-cnf = b_cnf.Configuration()
+config = b_cnf.Configuration()
 
 app = QApplication(sys.argv)
-ex = WMain()
+ex = WMain(config)
 
 sys.exit(app.exec_())
